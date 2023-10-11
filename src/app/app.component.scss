@@ -1,0 +1,106 @@
+// Get rotation speed in seconds for animation
+// $speed1 === animation duration in s
+// $revs1 === 60 / $speed1;
+// rev/min1 * teeth1 === rev/min2 * teeth2
+@function getGearSpeed($speed1, $teeth1, $teeth2) {
+  // speed in seconds per revolution
+  $revsPerMinute: 60 / $speed1;
+  $revsPerMinuteOut: $revsPerMinute * $teeth1 / $teeth2;
+  $speedOut: 60 / $revsPerMinuteOut;
+  @return $speedOut;
+}
+
+:host {
+
+  .site-container {
+    min-height: 100vh;
+
+    background-color: #120012;
+
+    .site-background {  
+      $maxScreenWidth: 3440px;
+      @keyframes clockwise {
+        0% {  
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes counterClockwise {
+        0% {
+          transform: rotate(360deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      
+      .gear {
+        position: fixed;
+        display: block;
+        top: 0;
+        left: 0;
+
+        $speed1: 120s;
+        $speed3: getGearSpeed($speed1, 60, 35);
+        $speed4: getGearSpeed($speed3, 35, 25);
+        $speed2: getGearSpeed($speed4, 25, 48);
+        $speed5: getGearSpeed($speed2, 48, 40);
+
+        // 1 -> 3 -> 4 -> 2 -> 5
+        // Mesh w/ 3
+        &#Gear1 {
+          width: 1740px;
+          top: -200px;
+          left: -250px;
+          animation: clockwise $speed1 linear infinite;
+        }
+        // Mesh w/ 3 & 5
+        &#Gear2 { 
+          width: 1400px;
+          top: -176px;
+          left: 2690px; // max screen width 3440 - half gear 2 width
+          
+          animation: counterClockwise $speed2 linear infinite;
+        }
+        // Mesh w/ 1 & 4
+        &#Gear3 {
+          width: 1000px;
+          top: 466px;
+          left: 1400px;
+      
+          animation: counterClockwise $speed3 linear infinite;
+        }
+        &#Gear4 {
+          width: 760px;
+          top: 868px;
+          left: 2294px;
+          $speed3: getGearSpeed(60s, 60, 35);
+          animation: clockwise $speed4 linear infinite;
+        }
+        &#Gear5 {
+          width: 1170px;
+          top: -570px;
+          left: 1710px;
+          animation: clockwise $speed5 linear infinite;  
+        }
+        
+      }
+    }
+
+    header {
+      h1 {
+        margin: 0;
+        padding: 3vw;
+      }
+    }
+
+    main {
+      flex: 1;
+    }
+
+    footer {}
+  }
+}
