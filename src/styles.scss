@@ -1,10 +1,52 @@
-html {
+@use './app/scss/imports' as imports;
 
-}
+html {}
 
 html, body {
   height: 100vh;
 
   margin: 0;
   padding: 0;
+
+  font-size: clamp(16px, 1.2vw, 32px);
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+  color: imports.$color_orange_lt;
+}
+
+h1,h2,h3,h4,h5 {
+  color: imports.$color_orange;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 2.8vw, 4rem);
+}
+h2 {
+  font-size: clamp(2rem, 2.2vw, 3.25rem);
+}
+h3 {
+  font-size: clamp(1.75rem, 1.8vw, 2.75rem);
+}
+h4 {
+  font-size: clamp(1.25rem, 1.5vw, 2.25rem);
+}
+h5 {
+  font-size: clamp(1rem, 1.2vw, 2rem);
+}
+
+
+a {
+  font-weight: bold;
+  color: imports.$color_pink;
+  white-space: nowrap;
+  
+  &:visited {
+    color: imports.$color_pink_dk;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+  width: 0;
 }

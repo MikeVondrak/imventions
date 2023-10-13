@@ -1,0 +1,45 @@
+
+$breakpoints: (
+  'min': 320,
+  'xs': 440,
+  'sm': 600,
+  'md': 840,
+  'lg': 1024,
+  'xl': 1280,
+  'ws': 1440,
+  'hd': 1920
+);
+
+
+
+@mixin gear($width, $top, $left, $animationDirection, $animationDuration) {
+  width: $width;
+  top: $top;
+  left: $left;
+  animation: $animationDirection $animationDuration linear infinite;
+}
+
+// Get rotation speed in seconds for animation
+// $speed1 === animation duration in s
+// $revs1 === 60 / $speed1;
+// rev/min1 * teeth1 === rev/min2 * teeth2
+@function getGearSpeed($speed1, $teeth1, $teeth2) {
+  // speed in seconds per revolution
+  $revsPerMinute: 60 / $speed1;
+  $revsPerMinuteOut: $revsPerMinute * $teeth1 / $teeth2;
+  $speedOut: 60 / $revsPerMinuteOut;
+  @return $speedOut;
+}
+
+@mixin media-breakpoint-gte($bp) {
+  $query: map-get($breakpoints, $bp) + 'px';
+  @media (min-width: #{$query}) {
+    @content;
+  }
+}
+
+@mixin is-portrait() {
+  @media (orientation: portrait) {
+    @content;
+  }  
+}
