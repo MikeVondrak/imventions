@@ -1,10 +1,10 @@
-@use 'scss/imports' as mv;
+@use 'scss/imports' as imports;
 
 .company-name {
   font-weight: bold;
-  color: mv.$color_orange;
+  color: imports.$color_orange;
   > span:first-of-type {
-    color: mv.$color_blue;
+    color: imports.$color_blue;
   }
 }
 
@@ -16,7 +16,7 @@
     min-height: 100vh;
     overflow: hidden;
 
-    background-color: mv.$color_purple_dk;
+    background-color: imports.$color_purple_dk;
 
     .site-background {
       position: absolute;
@@ -75,44 +75,44 @@
 
         // 1 -> 3 -> 4 -> 2 -> 5
         $speed1: 120s; // 62mm
-        $speed3: mv.getGearSpeed($speed1, 60, 35); // 37mm
-        $speed4: mv.getGearSpeed($speed3, 35, 25);
-        $speed2: mv.getGearSpeed($speed4, 25, 48); // 51mm
-        $speed5: mv.getGearSpeed($speed2, 48, 40);
-        $speed6: mv.getGearSpeed($speed1, 60, 48);
-        $speed7: mv.getGearSpeed($speed2, 48, 40);
+        $speed3: imports.getGearSpeed($speed1, 60, 35); // 37mm
+        $speed4: imports.getGearSpeed($speed3, 35, 25);
+        $speed2: imports.getGearSpeed($speed4, 25, 48); // 51mm
+        $speed5: imports.getGearSpeed($speed2, 48, 40);
+        $speed6: imports.getGearSpeed($speed1, 60, 48);
+        $speed7: imports.getGearSpeed($speed2, 48, 40);
 
         // Mesh w/ 3
         &#Gear1 {
-          @include mv.gear($width1, -4.65vw, -3.5vw, clockwise, $speed1);
+          @include imports.gear($width1, -4.65vw, -3.5vw, clockwise, $speed1);
         }
         // Mesh w/ 3 & 5
         &#Gear2 {
-          @include mv.gear($width2, -5.5vw, 78vw, counterClockwise, $speed2);
+          @include imports.gear($width2, -5.5vw, 78vw, counterClockwise, $speed2);
         }
         // Mesh w/ 1 & 4
         &#Gear3 {
-          @include mv.gear($width3, 19vw, 42.6vw, counterClockwise, $speed3);
+          @include imports.gear($width3, 19vw, 42.6vw, counterClockwise, $speed3);
         }
         // Mesh w. 3 & 2
         &#Gear4 {
-          @include mv.gear($width4, 28.95vw, 70.3vw, clockwise, $speed4);
+          @include imports.gear($width4, 28.95vw, 70.3vw, clockwise, $speed4);
         }
         // Mesh w/ 2
         &#Gear5 {
-          @include mv.gear($width5, -12.4vw, 47.35vw, clockwise, $speed5);
+          @include imports.gear($width5, -12.4vw, 47.35vw, clockwise, $speed5);
         }
         // Mesh w/ 2
         &#Gear5 {
-          @include mv.gear($width5, -12.4vw, 47.35vw, clockwise, $speed5);
+          @include imports.gear($width5, -12.4vw, 47.35vw, clockwise, $speed5);
         }
         // Mesh w/ 1 & 7
         &#Gear6 {
-          @include mv.gear($width6, 42.7vw, -11.75vw, counterClockwise, $speed6);
+          @include imports.gear($width6, 42.7vw, -11.75vw, counterClockwise, $speed6);
         }
         // Mesh w/ 6
         &#Gear7 {
-          @include mv.gear($width7, 44vw, 27.75vw, clockwise, $speed7);
+          @include imports.gear($width7, 44vw, 27.75vw, clockwise, $speed7);
         } 
       }
 
@@ -140,26 +140,26 @@
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      background-color: transparent;//mv.$color_black;
-      background-image: linear-gradient(0deg, mv.$color_black 50%, transparent);
+      background-color: transparent;//imports.$color_black;
+      background-image: linear-gradient(0deg, imports.$color_black 50%, transparent);
 
       img {
         width: 80vw;
         max-width: clamp(200px, 80vw, 1000px);
-        @include mv.media-breakpoint-gte(sm) {
+        @include imports.media-breakpoint-gte(sm) {
           max-width: clamp(200px, 60vw, 1000px);
         }
-        @include mv.media-breakpoint-gte(md) {
+        @include imports.media-breakpoint-gte(lg) {
           max-width: clamp(200px, 40vw, 1000px);
         }
-        background-image: radial-gradient(mv.$color_black, transparent 70%);
+        background-image: radial-gradient(imports.$color_black, transparent 70%);
       }
       > div {
         max-width: clamp(200px, 80vw, 1000px);
-        @include mv.media-breakpoint-gte(sm) {
+        @include imports.media-breakpoint-gte(sm) {
           max-width: clamp(200px, 60vw, 1000px);
         }
-        @include mv.media-breakpoint-gte(md) {
+        @include imports.media-breakpoint-gte(lg) {
           max-width: clamp(200px, 40vw, 1000px);
         }
         h1, h2 {
@@ -172,7 +172,7 @@
           .email-link {
             display: inline-flex;
             justify-content: center;
-            border: 4px dotted mv.$color_pink;
+            border: 4px dotted imports.$color_pink;
             border-radius: 25%;
             img {
               width: clamp(120px, 10vw, 160px);
@@ -182,16 +182,9 @@
           .fishbone-logo-link {
             position: relative;
             justify-content: center;
-
             
             img:first-of-type {  
-              width: clamp(200px, 10vw, 400px);
-            }
-            img:last-of-type {
-              position: absolute;
-              top: clamp(5rem, 4vw, 8rem);
-              left: clamp(1rem, 1vw, 2rem);
-              width: clamp(180px, 10vw, 300px);
+              width: clamp(200px, 12vw, 400px);
             }
           }
         }
@@ -204,7 +197,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      background-color: mv.$color_purple_dk;
+      background-color: imports.$color_purple_dk;
       position: relative;
       .logo-compact {
         width: clamp(2rem, 6vw, 4rem);
