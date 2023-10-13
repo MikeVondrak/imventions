@@ -122,13 +122,14 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background-image: linear-gradient(0deg, #080008 10%, transparent);
+        //background-image: linear-gradient(0deg, #080008 10%, transparent);
       }
     }
 
     header {
       z-index: 1;
       position: relative;
+      height: 0;
     }
 
     main {
@@ -141,7 +142,7 @@
       align-items: center;
       padding: 2rem;
       background-color: transparent;//imports.$color_black;
-      background-image: linear-gradient(0deg, imports.$color_black 50%, transparent);
+      background-image: linear-gradient(0deg, imports.$color_black 50%, rgba(0,0,0,0.2));
 
       img {
         width: 80vw;
